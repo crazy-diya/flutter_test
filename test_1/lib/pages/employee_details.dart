@@ -33,7 +33,7 @@ class _EmployeeDetailsState extends State<EmployeeDetails> {
     return SafeArea(
         child: Scaffold(
       body: Container(
-        padding: EdgeInsets.only(top: 25, left: 10, right: 10, bottom: 10),
+        padding: EdgeInsets.only(top: 25, left: 15, right: 15, bottom: 10),
         height: height,
         width: width,
         child: SingleChildScrollView(
@@ -160,6 +160,7 @@ class _EmployeeDetailsState extends State<EmployeeDetails> {
                   height: 10,
                 ),
                 TextFormField(
+
                   controller: date,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) {
@@ -170,7 +171,8 @@ class _EmployeeDetailsState extends State<EmployeeDetails> {
                     }
                   },
                   onTap: () {},
-                  decoration: InputDecoration(
+                  decoration: InputDecoration(suffixIcon: Icon(Icons.calendar_today),
+
                     contentPadding: const EdgeInsets.only(left: 10),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black, width: 1.5),
@@ -201,7 +203,7 @@ class _EmployeeDetailsState extends State<EmployeeDetails> {
                         title: const Text('Permanent'),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: width * 0.5,
                       child: ListTile(
                         leading: Radio<String>(

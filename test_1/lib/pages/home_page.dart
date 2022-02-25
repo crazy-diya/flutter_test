@@ -13,10 +13,11 @@ class _HomePageState extends State<HomePage> {
   TextFormField searchEmployee = TextFormField();
   late double width, height;
   String _selected = 'Permanent';
+
   @override
   Widget build(BuildContext context) {
     width = MediaQuery.of(context).size.width;
-     height = MediaQuery.of(context).size.height;
+    height = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
         drawerEnableOpenDragGesture: false,
@@ -169,7 +170,114 @@ class _HomePageState extends State<HomePage> {
                                   BorderRadius.all(Radius.circular(25))),
                         ),
                       ),
-
+                      InkWell(
+                        onTap: () => _showBottomSheet(context),
+                        child: Card(
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: 8, right: 8, top: 14, bottom: 8),
+                            child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CircleAvatar(
+                                    backgroundImage: NetworkImage(
+                                      "https://www.whatsappprofiledpimages.com/wp-content/uploads/2021/11/2021-Beautiful-Whatsapp-Dp-Profile-Images-For-Girl-download.gif",
+                                    ),
+                                    radius: width * 0.1,
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  SizedBox(
+                                    width: width * 0.62,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text("Employee No: 1",
+                                            style: TextStyle(fontSize: 16)),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text("Employee Name: Jhon Doe",
+                                            style: TextStyle(fontSize: 16)),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text("Date of Birth: dd/mm/yyyy",
+                                            style: TextStyle(fontSize: 16)),
+                                        SizedBox(
+                                          height: 3,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            ElevatedButton(
+                                              onPressed: () {},
+                                              style: ButtonStyle(
+                                                  shape:
+                                                      MaterialStateProperty.all<
+                                                          RoundedRectangleBorder>(
+                                                    RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(25),
+                                                        side: BorderSide(
+                                                            width: 0.8)),
+                                                  ),
+                                                  backgroundColor:
+                                                      MaterialStateProperty.all<
+                                                              Color>(
+                                                          Colors.transparent),
+                                                  elevation:
+                                                      MaterialStateProperty.all(
+                                                          0)),
+                                              child: Container(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        vertical: 10),
+                                                width: width * 0.20,
+                                                child: const Text(
+                                                  "Permanent",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: Colors.black),
+                                                ),
+                                              ),
+                                            ),
+                                            Row(
+                                              children: [
+                                                InkWell(
+                                                  onTap: () {},
+                                                  child: const Icon(
+                                                    Icons.edit,
+                                                  ),
+                                                  // padding: EdgeInsets.all(0)
+                                                ),
+                                                InkWell(
+                                                  onTap: () =>
+                                                      buildShowDialog(context),
+                                                  child: const Icon(
+                                                    Icons.delete,
+                                                  ),
+                                                  // padding: EdgeInsets.all(0)
+                                                ),
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ]),
+                          ),
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(25))),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -262,7 +370,7 @@ class _HomePageState extends State<HomePage> {
 
   _showBottomSheet(BuildContext context) {
     showModalBottomSheet(
-        backgroundColor: Colors.white60,
+        backgroundColor: Color(0xffe3e0e0),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
@@ -270,177 +378,195 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         context: context,
-        builder: (context) => Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.all(14),
-                  width: width,
-                  child: const Text(
-                    "Employee Details",
-                    textAlign: TextAlign.left,
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Container(
-                  color: Colors.white,
-                  height: height * 0.5,
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        SizedBox(height: 20,),
-                        TextFormField(
-
-                          decoration: InputDecoration(hintText: 'Employee Id',
-
-                            contentPadding: const EdgeInsets.only(left: 10),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black, width: 1.5),
-                              borderRadius: BorderRadius.circular(16.0),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black, width: 1.5),
-                              borderRadius: BorderRadius.circular(16.0),
-                            ),
-                            //fillColor: Colors.green
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        TextFormField(
-                          decoration: InputDecoration(hintText: 'Employee Name',
-
-                            contentPadding: const EdgeInsets.only(left: 10),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black, width: 1.5),
-                              borderRadius: BorderRadius.circular(16.0),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black, width: 1.5),
-                              borderRadius: BorderRadius.circular(16.0),
-                            ),
-                            //fillColor: Colors.green
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        TextFormField(
-                          decoration: InputDecoration(hintText: 'Email Address',
-
-                            contentPadding: const EdgeInsets.only(left: 10),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black, width: 1.5),
-                              borderRadius: BorderRadius.circular(16.0),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black, width: 1.5),
-                              borderRadius: BorderRadius.circular(16.0),
-                            ),
-                            //fillColor: Colors.green
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        TextFormField(
-                          onTap: () {},
-                          decoration: InputDecoration(hintText: 'Mobile Number',
-
-                            contentPadding: const EdgeInsets.only(left: 10),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black, width: 1.5),
-                              borderRadius: BorderRadius.circular(16.0),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black, width: 1.5),
-                              borderRadius: BorderRadius.circular(16.0),
-                            ),
-                            //fillColor: Colors.green
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        TextFormField(
-                          onTap: () {},
-                          decoration: InputDecoration(
-                            contentPadding: const EdgeInsets.all(0),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black, width: 1.5),
-                              borderRadius: BorderRadius.circular(16.0),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black, width: 1.5),
-                              borderRadius: BorderRadius.circular(16.0),
-                            ),
-                            //fillColor: Colors.green
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            Container(
-                              width: width * 0.4,
-                              child: ListTile(
-                                leading: Radio<String>(
-                                  value: 'Permanent',
-                                  groupValue: _selected,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      _selected = value!;
-                                    });
-                                  },
-                                ),
-                                contentPadding: EdgeInsets.all(0),
-                                title: const Text('Permanent'),
-                              ),
-                            ),
-                            Container(
-                              width: width * 0.5,
-                              child: ListTile(
-                                leading: Radio<String>(
-                                  value: 'Temporary',
-                                  groupValue: _selected,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      _selected = value!;
-                                    });
-                                  },
-                                ),
-                                title: const Text('Temporary'),
-                                contentPadding: EdgeInsets.all(0),
-                              ),
-                            ),
-                          ],
-                        ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(14),
-                                    side: BorderSide(width: 1)),
-                              ),
-                              backgroundColor:
-                              MaterialStateProperty.all<Color>(Colors.transparent),
-                              elevation: MaterialStateProperty.all(0)),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(vertical: 20),
-                            width: width,
-                            child: const Text(
-                              "Save",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(color: Colors.black),
-                            ),
-                          ),
-                        ),
-
-                      ],
+        builder: (context) => SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(14),
+                    width: width,
+                    child: const Text(
+                      "Employee Details",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(fontSize: 16),
                     ),
                   ),
-                ),
-              ],
+                  Container(
+                    color: Colors.white,
+                    height: height * 0.5,
+                    padding: EdgeInsets.symmetric(horizontal: 18),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 20,
+                          ),
+                          TextFormField(
+                            decoration: InputDecoration(
+                              hintText: 'Employee Id',
+
+                              contentPadding: const EdgeInsets.only(left: 10),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.black, width: 1.5),
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.black, width: 1.5),
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              //fillColor: Colors.green
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          TextFormField(
+                            decoration: InputDecoration(
+                              hintText: 'Employee Name',
+                              contentPadding: const EdgeInsets.only(left: 10),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.black, width: 1.5),
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.black, width: 1.5),
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              //fillColor: Colors.green
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          TextFormField(
+                            decoration: InputDecoration(
+                              hintText: 'Email Address',
+
+                              contentPadding: const EdgeInsets.only(left: 10),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.black, width: 1.5),
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.black, width: 1.5),
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              //fillColor: Colors.green
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          TextFormField(
+                            onTap: () {},
+                            decoration: InputDecoration(
+                              hintText: 'Mobile Number',
+
+                              contentPadding: const EdgeInsets.only(left: 10),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.black, width: 1.5),
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.black, width: 1.5),
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              //fillColor: Colors.green
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          TextFormField(
+                            onTap: () {},
+                            decoration: InputDecoration(
+                              suffixIcon: Icon(Icons.calendar_today),
+                              contentPadding: const EdgeInsets.all(0),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.black, width: 1.5),
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.black, width: 1.5),
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              //fillColor: Colors.green
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                width: width * 0.4,
+                                child: ListTile(
+                                  leading: Radio<String>(
+                                    value: 'Permanent',
+                                    groupValue: _selected,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _selected = value!;
+                                      });
+                                    },
+                                  ),
+                                  contentPadding: EdgeInsets.all(0),
+                                  title: const Text('Permanent'),
+                                ),
+                              ),
+                              Container(
+                                width: width * 0.5,
+                                child: ListTile(
+                                  leading: Radio<String>(
+                                    value: 'Temporary',
+                                    groupValue: _selected,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _selected = value!;
+                                      });
+                                    },
+                                  ),
+                                  title: const Text('Temporary'),
+                                  contentPadding: EdgeInsets.all(0),
+                                ),
+                              ),
+                            ],
+                          ),
+                          ElevatedButton(
+                            onPressed: () {},
+                            style: ButtonStyle(
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(14),
+                                      side: BorderSide(width: 1)),
+                                ),
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.transparent),
+                                elevation: MaterialStateProperty.all(0)),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(vertical: 20),
+                              width: width,
+                              child: const Text(
+                                "Save",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ));
   }
 }
